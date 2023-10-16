@@ -7,7 +7,6 @@ def setup(location):
     #dictionary with filename as key and content as value
     #files to be read in the tests
     f_read = {
-        "first.txt":"this is a text"
 
     }
     #files to be written to in the tests
@@ -62,8 +61,9 @@ def main():
     setup(files_location)
 
     tests()
-        
+
     teardown(files_location, files_start)
+
 
     return None
 
