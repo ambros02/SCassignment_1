@@ -1,7 +1,7 @@
 import os
 
 
-def setup():
+def setup(location):
     """use setup to create needed files with name and optional content"""
 
     #dictionary with filename as key and content as value
@@ -23,7 +23,8 @@ def setup():
     file_types = [f_read, f_write, f_delete]
     for files in file_types:
         for name, content in files.items():
-            with open(name, 'w') as test_file:
+            file_path = os.path.join(location,name)
+            with open(file_path, 'w') as test_file:
                 test_file.write(content)
             
 
@@ -58,7 +59,7 @@ def main():
     files_start = os.listdir(files_location)
 
 
-    setup()
+    setup(files_location)
 
     tests()
         
