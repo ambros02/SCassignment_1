@@ -1,4 +1,5 @@
 import os
+import time
 
 
 def setup(location):
@@ -31,6 +32,7 @@ def setup(location):
 
 
 def tests():
+    total_start_time = time.time()
     res = {"total": 0, "pass": 0, "fail": 0, "error": 0}
     for(name, test) in globals().items():
         if not name.startswith("test_"):
@@ -42,7 +44,9 @@ def tests():
             res["fail"] += 1
         except Exception:
             res["error"] += 1
-    print(f"Total of {res['total']} test(s), {res['pass']} passed, {res['fail']} failed, {res['error']} error(s)")
+    total_end_time = time.time()
+    total_time = total_end_time - total_start_time
+    print(f"Total Tests: {res['total']}, Passed: {res['pass']}, Failed: {res['fail']}, Errors: {res['error']}, Time: {total_time}s")
 
 
 def find_tests():
