@@ -10,11 +10,11 @@ def setup(location):
 
     }
     #files to be written to in the tests
-    f_write={
+    f_write = {
 
     }
     #files to delete during the test
-    f_delete={
+    f_delete = {
 
     }
 
@@ -31,6 +31,21 @@ def setup(location):
 
 
 def tests():
+    res = {"total": 0, "pass": 0, "fail": 0, "error": 0}
+    for(name, test) in globals().items():
+        if not name.startswith("test_"):
+            continue
+        try:
+            test()
+            res["pass"] += 1
+        except AssertionError:
+            res["fail"] += 1
+        except Exception:
+            res["error"] += 1
+    print(f"Total of {res['total']} test(s), {res['pass']} passed, {res['fail']} failed, {res['error']} error(s)")
+
+
+def find_tests():
 
     return None
 
