@@ -37,6 +37,7 @@ def tests():
     for(name, test) in globals().items():
         if not name.startswith("test_"):
             continue
+        test_start_time = time.time()
         try:
             test()
             res["pass"] += 1
@@ -44,6 +45,12 @@ def tests():
             res["fail"] += 1
         except Exception:
             res["error"] += 1
+        finally:
+            res["total"] += 1
+            test_end_time = time.time()
+            test_time = test_end_time - test_start_time
+            print(f"Test: {name}, Time: {test_time}s")
+
     total_end_time = time.time()
     total_time = total_end_time - total_start_time
     print(f"Total Tests: {res['total']}, Passed: {res['pass']}, Failed: {res['fail']}, Errors: {res['error']}, Time: {total_time}s")
