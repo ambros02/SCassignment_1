@@ -41,15 +41,21 @@ def tests():
         try:
             test()
             res["pass"] += 1
-        except AssertionError:
-            res["fail"] += 1
-        except Exception:
-            res["error"] += 1
-        finally:
-            res["total"] += 1
             test_end_time = time.time()
             test_time = test_end_time - test_start_time
-            print(f"Test: {name}, Time: {test_time}s")
+            print(f"Test: {name}, Pass, Time: {test_time}s")
+        except AssertionError:
+            res["fail"] += 1
+            test_end_time = time.time()
+            test_time = test_end_time - test_start_time
+            print(f"Test: {name}, Fail, Time: {test_time}s")
+        except Exception:
+            res["error"] += 1
+            test_end_time = time.time()
+            test_time = test_end_time - test_start_time
+            print(f"Test: {name}, Error, Time: {test_time}s")
+        finally:
+            res["total"] += 1
 
     total_end_time = time.time()
     total_time = total_end_time - total_start_time
