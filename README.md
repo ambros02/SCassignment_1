@@ -8,11 +8,6 @@ DOCUMENTATION
     opened documentation
 
 
-=======
-- (Wassim, 11.10.23)
-    opened documentation second time
-
-
 ---------------------------------------------------------------Overview--------------------------------------------------------------
 
 -----------------------------------------------------------------Main----------------------------------------------------------------
@@ -39,6 +34,17 @@ DOCUMENTATION
 ----------------------------------------------------------------User-----------------------------------------------------------------
 
 ---------------------------------------------------------------Results---------------------------------------------------------------
+- (Yannik 21.10.2023)
+    The results are tracked and afterwards printed inside the tests() function. We have decided to give the results for 
+    each individual test and at the end print the overview of all tests. In the res dictionary the three outcomes pass, 
+    fail and error will be updated during testing. 
+    As we learned in the lecture, we used introspection to find all tests with the prefix "test_" which we want to test.
+    For the individual test results, the time will be tracked with the time.time() method and starts before the test is 
+    performed. Depending on how the test results, the time will stop in the try or one of the two except blocks and the 
+    result will be printed for this test. After the except blocks a finally block is implemented to track the total 
+    number of tests which are carried out. In the for loop the res dictionary gets updated with the outcome of every 
+    test performed and when the loop ends, the time is stopped. Finally, the overall results of the testing is printed 
+    out.
 
 ----------------------------------------------------------------Tests----------------------------------------------------------------
 
