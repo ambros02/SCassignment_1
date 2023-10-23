@@ -142,12 +142,8 @@ def tests():
     print(f"Total Tests: {res['total']}, Passed: {res['pass']}, Failed: {res['fail']}, Errors: {res['error']}, Time: {total_time}s")
 
 
-def find_tests():
-
-    return None
-
 def teardown(location, existing_start):
-    """remove all files that were generated in the testing: more precicely all the files which were not in this folder in the beginning"""
+    """remove all files that were generated in the testing: more precicly all the files which were not in this folder in the beginning"""
     
     #files which exist after the program has been run
     files_end = os.listdir(location)
