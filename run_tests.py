@@ -137,6 +137,8 @@ def tests(pattern):
                 print(f"Test: {name}, Error, Time: {test_time}s")
             finally:
                 res["total"] += 1
+        else:
+            continue
 
     total_end_time = time.time()
     total_time = total_end_time - total_start_time

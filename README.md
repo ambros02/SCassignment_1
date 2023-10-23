@@ -44,6 +44,13 @@
 
 ----------------------------------------------------------------**User**-----------------------------------------------------------------
 
+- (Yannik 23.10.2023)
+    <p> We imported the sys module to be able to read the user input. With sys.argv we can access the command-line <br>
+    arguments. The pattern is set to None if there is no pattern selection, so all tests are selected by default. <br>
+    In the main we check if the user has selected a pattern and assign it to the variable pattern. The pattern is <br>
+    passed to the tests() function. </p>
+    <p> 
+
 ---------------------------------------------------------------**Results**---------------------------------------------------------------
 - (Yannik 21.10.2023)
     <p> The results are tracked and afterwards printed inside the tests() function. We have decided to give the results <br> 
@@ -70,8 +77,8 @@
     to True. The second one checks if we can create an already existing file. It also checks if we would overwrite the already <br>
     existing file with the new content. <br></p>
     <p>We have four different tests for the write_file() function. The first test checks if new content can be written at all. <br>
-    We use the write_file function to write new content in a already existing file. The next test checks if we can write an <br>
-    empty string. We have to use the write_file() function firt to write an emtpy string and then assert the file equal to an <br>
+    We use the write_file function to write new content in an already existing file. The next test checks if we can write an <br>
+    empty string. We have to use the write_file() function first to write an emtpy string and then assert the file equal to an <br>
     empty string. We also test if we can write to a non-existing file. Since the file doesn't exist, it is not mentioned in the <br> 
     setup function. The last test checks if we can write with some special characters.<br></p>
     <p>The delete_file tests are structured the same as the others. Here, however, we have built in two assert arguments, one to <br>
