@@ -47,9 +47,10 @@
 - (Yannik 23.10.2023)
     <p> We imported the sys module to be able to read the user input. With sys.argv we can access the command-line <br>
     arguments. The pattern is set to None if there is no pattern selection, so all tests are selected by default. <br>
-    In the main we check if the user has selected a pattern and assign it to the variable pattern. The pattern is <br>
-    passed to the tests() function. </p>
-    <p> 
+    In the main we check if the user has selected a pattern for example "read" and assign it to the variable pattern. <br>
+    The pattern is passed to the tests() function where all tests with this pattern are tested (or by default all tests <br>
+    are tested). Before we test we have to check if there are tests with the selected pattern and this happens in the <br>
+    for loop before the try block. </p>
 
 ---------------------------------------------------------------**Results**---------------------------------------------------------------
 - (Yannik 21.10.2023)
