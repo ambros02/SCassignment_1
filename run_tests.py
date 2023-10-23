@@ -118,7 +118,7 @@ def tests(pattern):
     res = {"total": 0, "pass": 0, "fail": 0, "error": 0}
 
     for(name, test) in globals().items():
-        if name.startswith("test_") and (pattern == None or pattern == test.__name__):
+        if name.startswith("test_") and (pattern == None or pattern in test.__name__):
             test_start_time = time.time()
             try:
                 test()
