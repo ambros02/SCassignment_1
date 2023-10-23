@@ -4,38 +4,37 @@ import time
 import file_manager
 
 
-
 def setup(location):
     """use setup to create needed files with name and optional content"""
 
-    #dictionary with filename as key and content as value
-    #files to be read in the tests
+    # dictionary with filename as key and content as value
+    # files to be read in the tests
     f_read = {
         "read_test_file": "content_for_test_file",
         "read_empty_test_file": ""
     }
-    #files to be written to in the tests
+    # files to be written to in the tests
     f_write = {
         "write_test_file": "old_content_for_write_test_file",
         "write_empty_content_test_file": "",
         "write_special_char_test_file": "$£!?%&ç*"
     }
-    #files to delete during the test
+    # files to delete during the test
     f_delete = {
         "delete_existing_test_file": "content_to_delete",
         "delete_empty_test_file": ""
     }
 
-    #create all the files
+    # create all the files
     file_types = [f_read, f_write, f_delete]
     for files in file_types:
         for name, content in files.items():
-            file_path = os.path.join(location,name)
+            file_path = os.path.join(location, name)
             with open(file_path, 'w') as test_file:
                 test_file.write(content)
-            
 
     return None
+
 
 """test functions for read_file"""
 
@@ -145,12 +144,12 @@ def tests(pattern):
 
 
 def teardown(location, existing_start):
-    """remove all files that were generated in the testing: more precicly all the files which were not in this folder in the beginning"""
+    """remove all files that were generated in the testing: more precisely all the files which were not in this folder in the beginning"""
     
-    #files which exist after the program has been run
+    # files which exist after the program has been run
     files_end = os.listdir(location)
 
-    #deleting of the files if they were not part of the original program
+    # deleting of the files if they were not part of the original program
     for file in files_end:
         if file not in existing_start:
             file_path = os.path.join(location, file)
@@ -159,14 +158,12 @@ def teardown(location, existing_start):
     return None
 
 
-
 def main():
     """main function for the flow control of the program"""
 
-    #get a stamp of which files exists before execution, so we can delete the ones that were generated in the test
+    # get a stamp of which files exists before execution, so we can delete the ones that were generated in the test
     files_location = os.path.dirname(os.path.abspath(__file__))
     files_start = os.listdir(files_location)
-
 
     setup(files_location)
 
@@ -177,13 +174,9 @@ def main():
 
     teardown(files_location, files_start)
 
-
     return None
-
 
 
 if __name__ == "__main__":
     """run the main function if this is the main file"""
     main()
-
-
