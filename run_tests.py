@@ -1,4 +1,5 @@
 import os
+import sys
 import time
 import file_manager
 
@@ -110,32 +111,33 @@ def test_delete_non_existing_file():
 def test_delete_empty_file():
     assert file_manager.delete_file("delete_empty_test_file") is True  # Deleting an empty file should return True
     assert file_manager.read_file("delete_empty_test_file") is None
-    
-def tests():
+
+
+def tests(pattern):
     total_start_time = time.time()
     res = {"total": 0, "pass": 0, "fail": 0, "error": 0}
+
     for(name, test) in globals().items():
-        if not name.startswith("test_"):
-            continue
-        test_start_time = time.time()
-        try:
-            test()
-            res["pass"] += 1
-            test_end_time = time.time()
-            test_time = test_end_time - test_start_time
-            print(f"Test: {name}, Pass, Time: {test_time}s")
-        except AssertionError:
-            res["fail"] += 1
-            test_end_time = time.time()
-            test_time = test_end_time - test_start_time
-            print(f"Test: {name}, Fail, Time: {test_time}s")
-        except Exception:
-            res["error"] += 1
-            test_end_time = time.time()
-            test_time = test_end_time - test_start_time
-            print(f"Test: {name}, Error, Time: {test_time}s")
-        finally:
-            res["total"] += 1
+        if name.startswith("test_") and (pattern == None or pattern == test.__name__):
+            test_start_time = time.time()
+            try:
+                test()
+                res["pass"] += 1
+                test_end_time = time.time()
+                test_time = test_end_time - test_start_time
+                print(f"Test: {name}, Pass, Time: {test_time}s")
+            except AssertionError:
+                res["fail"] += 1
+                test_end_time = time.time()
+                test_time = test_end_time - test_start_time
+                print(f"Test: {name}, Fail, Time: {test_time}s")
+            except Exception:
+                res["error"] += 1
+                test_end_time = time.time()
+                test_time = test_end_time - test_start_time
+                print(f"Test: {name}, Error, Time: {test_time}s")
+            finally:
+                res["total"] += 1
 
     total_end_time = time.time()
     total_time = total_end_time - total_start_time
@@ -168,7 +170,10 @@ def main():
 
     setup(files_location)
 
-    tests()
+    pattern = None
+    if len(sys.argv) > 1 and sys.argv[1] == "--select":
+        pattern = sys.argv[2]
+    tests(pattern)
 
     teardown(files_location, files_start)
 
