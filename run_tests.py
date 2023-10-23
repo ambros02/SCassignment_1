@@ -80,15 +80,18 @@ def test_write_special_char():
 def test_delete_existing_file():
     result = file_manager.delete_file("delete_existing_test_file")
     assert result is True  # Deleting an existing file should return True
+    assert file_manager.read_file("delete_existing_test_file") is None
+
 
 def test_delete_non_existing_file():
     result = file_manager.delete_file("non_existing_file.txt")
     assert result is False  # Deleting a non-existing file should return False
 
+
 def test_delete_empty_file():
     result = file_manager.delete_file("delete_empty_test_file")
     assert result is True  # Deleting an empty file should return True
-
+    assert file_manager.read_file("delete_empty_test_file") is None
     
 def tests():
     total_start_time = time.time()
