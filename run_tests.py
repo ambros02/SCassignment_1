@@ -53,25 +53,17 @@ def test_read_none_existent_file():
 
 def test_create_empty_file():
     # Test creating an empty file
-    file_name = "create_empty_file"
-    result = file_manager.create_file(file_name)
-    assert result is True  # Creating an empty file should return True
+    assert file_manager.create_file("create_empty_file") is True  # Creating an empty file should return True
     # Check if the file is empty
-    file_content = file_manager.read_file(file_name)
-    assert file_content == ""
+    assert file_manager.read_file("create_empty_file") == ""
 
 
 def test_create_existing_file():
     # Test creating a file with a name that already exists
-    file_name = "existing_file"
-    initial_content = "initial_content"
-    file_manager.create_file(file_name, initial_content)
-    new_content = "new_content"
-    result = file_manager.create_file(file_name, new_content)
-    assert result is True  # Creating a file with an existing name should return True
+    file_manager.create_file("existing_file", "initial_content")
+    assert file_manager.create_file("existing_file", "new_content") is True  # Creating a file with an existing name should return True
     # Check if the file was overwritten with the new content
-    file_content = file_manager.read_file(file_name)
-    assert file_content == new_content
+    assert file_manager.read_file("existing_file") == "new_content"
 
 
 """test functions for write_file"""
