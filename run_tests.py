@@ -123,18 +123,18 @@ def tests(pattern):
                 test()
                 res["pass"] += 1
                 test_end_time = time.time()
-                test_time = test_end_time - test_start_time
-                print(f"Test: {name}, Pass, Time: {test_time}s")
+                test_time = test_end_time-test_start_time
+                print(f"Test: {name}, Pass, Time: {test_time:.8f}s")
             except AssertionError:
                 res["fail"] += 1
                 test_end_time = time.time()
-                test_time = test_end_time - test_start_time
-                print(f"Test: {name}, Fail, Time: {test_time}s")
+                test_time = test_end_time-test_start_time
+                print(f"Test: {name}, Fail, Time: {test_time:.8f}s")
             except Exception:
                 res["error"] += 1
                 test_end_time = time.time()
-                test_time = round(test_end_time - test_start_time,3)
-                print(f"Test: {name}, Error, Time: {test_time}s")
+                test_time = test_end_time-test_start_time
+                print(f"Test: {name}, Error, Time: {test_time:.8f}s")
             finally:
                 res["total"] += 1
         else:
@@ -142,7 +142,7 @@ def tests(pattern):
 
     total_end_time = time.time()
     total_time = total_end_time - total_start_time
-    print(f"Total Tests: {res['total']}, Passed: {res['pass']}, Failed: {res['fail']}, Errors: {res['error']}, Time: {total_time}s")
+    print(f"Total Tests: {res['total']}, Passed: {res['pass']}, Failed: {res['fail']}, Errors: {res['error']}, Time: {total_time:.8f}s")
 
 
 def teardown(location, existing_start):
