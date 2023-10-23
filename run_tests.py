@@ -1,5 +1,7 @@
 import os
 import time
+import file_manager
+
 
 
 def setup(location):
@@ -8,15 +10,19 @@ def setup(location):
     #dictionary with filename as key and content as value
     #files to be read in the tests
     f_read = {
-
+        "read_test_file": "content_for_test_file",
+        "read_empty_test_file": ""
     }
     #files to be written to in the tests
     f_write = {
-
+        "write_test_file": "old_content_for_write_test_file",
+        "write_empty_content_test_file": "",
+        "write_special_char_test_file": "$£!?%&ç*"
     }
     #files to delete during the test
     f_delete = {
-
+        "delete_existing_test_file": "content_to_delete",
+        "delete_empty_test_file": ""
     }
 
     #create all the files
