@@ -158,9 +158,12 @@ def teardown(location, existing_start):
         if file not in existing_start:
             file_path = os.path.join(location, file)
             os.remove(file_path)
-
+    #deleting of the files created by file_manager.py during the running of the tesets
     for file in created:
-        os.remove(file)
+        try:
+            os.remove(file)
+        except:
+            continue   
 
     return None
 
