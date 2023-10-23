@@ -148,6 +148,8 @@ def tests(pattern):
 def teardown(location, existing_start):
     """remove all files that were generated in the testing: more precisely all the files which were not in this folder in the beginning"""
     
+    #list with files created during the run
+    created = ["create_empty_file","existing_file","write_test_file","write_empty_content_test_file","non_existing_file","write_special_char_test_file"]
     # files which exist after the program has been run
     files_end = os.listdir(location)
 
@@ -156,6 +158,9 @@ def teardown(location, existing_start):
         if file not in existing_start:
             file_path = os.path.join(location, file)
             os.remove(file_path)
+
+    for file in created:
+        os.remove(file)
 
     return None
 
