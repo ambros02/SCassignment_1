@@ -53,7 +53,7 @@ def test_read_none_existent_file():
 
 def test_create_empty_file():
     # Test creating an empty file
-    file_name = "create_empty_file.txt"
+    file_name = "create_empty_file"
     result = file_manager.create_file(file_name)
     assert result is True  # Creating an empty file should return True
     # Check if the file is empty
