@@ -133,7 +133,7 @@ def tests(pattern):
             except Exception:
                 res["error"] += 1
                 test_end_time = time.time()
-                test_time = test_end_time - test_start_time
+                test_time = round(test_end_time - test_start_time,3)
                 print(f"Test: {name}, Error, Time: {test_time}s")
             finally:
                 res["total"] += 1
