@@ -59,18 +59,25 @@
 
 ----------------------------------------------------------------**Tests**----------------------------------------------------------------
 - (Wassim 23.10.2023)
-    <p>The name is very important for all test functions. Each test must begin with test_ so that the tests can be found in the tests() <br>
-    function as discussed in class. The rest of the name was chosen so that one should already understand what is being tested<br>
-    with this function.</p>
-    <p>The three tests for the read_me() function are similar to those already discussed in the lab and task description. The files have already <br>
-    been entered in the setup() function, so you only have to apply the read_file function and set it equal to the content. <br>
-    The next test checks if you want to read an empty file and the last one compares a non-existent file to None. <br></p>
-    <p>The test functions for the create_file() function has 2 tests. Once we test if an empty file can be created and once if we can <br>
-    create an already existing file. <br></p>
-    <p>We have 4 tests for the write_file() function. The first test checks if new content can be written at all. The next test checks <br>
-    if we can write an empty string. We also test if we can write to a non-existing file and one more test for some special characters.<br></p>
+    <p>The name is very important for all test functions. Each test must begin with test_ so that the tests can be found <br>
+    in the tests() function as discussed in class. The rest of the name was chosen so that one should already understand <br>
+    what is being tested with this function.</p>
+    <p>The three tests for the read_me() function are similar to those already discussed in the lab and task description. <br>
+    The files have already been entered in the setup() function, so we only applied the read_file function and set it <br>
+    equal to the content. The next test checks if you want to read an empty file and the last one compares a non-existent <br>
+    file to None. <br></p>
+    <p>We have two tests for the create_file function. The first one tests if we can create a new empty file and asserts it <br>
+    to True. The second one checks if we can create an already existing file. It also checks if we would overwrite the already <br>
+    existing file with the new content. <br></p>
+    <p>We have four different tests for the write_file() function. The first test checks if new content can be written at all. <br>
+    We use the write_file function to write new content in a already existing file. The next test checks if we can write an <br>
+    empty string. We have to use the write_file() function firt to write an emtpy string and then assert the file equal to an <br>
+    empty string. We also test if we can write to a non-existing file. Since the file doesn't exist, it is not mentioned in the <br> 
+    setup function. The last test checks if we can write with some special characters.<br></p>
     <p>The delete_file tests are structured the same as the others. Here, however, we have built in two assert arguments, one to <br>
-    see if the file has been deleted and another to test that there is nothing in the file with the read_me function. </p>
+    see if the file has been deleted and another just to extra check that there is nothing in the file with the read_me function. <br>
+    The first test deletes an existing file. The file is already mentioned in the setup function as well. The next test <br>
+    checks if we can delete a non existing file. The last test deletes an empty file.</p>
 
 --------------------------------------------------------------**Teardown**---------------------------------------------------------------
 - (Ambros 16.10.2023)
