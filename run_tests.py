@@ -84,7 +84,7 @@ def test_delete_existing_file():
 
 
 def test_delete_non_existing_file():
-    result = file_manager.delete_file("non_existing_file.txt")
+    result = file_manager.delete_file("non_existing_file")
     assert result is False  # Deleting a non-existing file should return False
 
 
