@@ -38,11 +38,14 @@ def setup(location):
 
 """test functions for read_file"""
 
+
 def test_read_file():
     assert file_manager.read_file("read_test_file") == "content_for_test_file"
 
+
 def test_read_empty_file():
     assert file_manager.read_file("read_empty_test_file") == ""
+
 
 def test_read_none_existent_file():
     assert file_manager.read_file("read_none_existent_test_file") is None
@@ -70,9 +73,10 @@ def test_create_existing_file():
 
 
 def test_write_file():
-    # Overwrite existing test file
+    # Write in existing test file
     file_manager.write_file("write_test_file", "new_content_for_write_test_file")
     assert file_manager.read_file("write_test_file") == "new_content_for_write_test_file"
+
 
 def test_write_empty_content():
     # Test writing empty content to an existing file
@@ -82,33 +86,29 @@ def test_write_empty_content():
 
 def test_write_non_existing_file():
     # Test writing to a non-existing file
-    result = file_manager.write_file("non_existing_file", "content_to_be_written")
-    assert result is True  # Writing to a non-existing file should create the file and return True
+    assert file_manager.write_file("non_existing_file", "content_to_be_written") is True  # Writing to a non-existing file should create the file and return True
+
 
 def test_write_special_char():
     # Test writing content with special characters to a file
-    content = "Special characters: $£?!*ç%&"
-    file_manager.write_file("write_special_char_test_file", content)
-    assert file_manager.read_file("write_special_char_test_file") == content
+    file_manager.write_file("write_special_char_test_file", "Special characters: $£?!*ç%&")
+    assert file_manager.read_file("write_special_char_test_file") == "Special characters: $£?!*ç%&"
 
 
 """test functions for delete_file"""
 
 
 def test_delete_existing_file():
-    result = file_manager.delete_file("delete_existing_test_file")
-    assert result is True  # Deleting an existing file should return True
+    assert file_manager.delete_file("delete_existing_test_file") is True  # Deleting an existing file should return True
     assert file_manager.read_file("delete_existing_test_file") is None
 
 
 def test_delete_non_existing_file():
-    result = file_manager.delete_file("non_existing_file")
-    assert result is False  # Deleting a non-existing file should return False
+    assert file_manager.delete_file("non_existing_test_file") is False  # Deleting a non-existing file should return False
 
 
 def test_delete_empty_file():
-    result = file_manager.delete_file("delete_empty_test_file")
-    assert result is True  # Deleting an empty file should return True
+    assert file_manager.delete_file("delete_empty_test_file") is True  # Deleting an empty file should return True
     assert file_manager.read_file("delete_empty_test_file") is None
     
 def tests():
