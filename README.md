@@ -95,7 +95,7 @@
 
 - (Ambros 24.10.2023)
     <p>The test execution order is randomized to ensure that all tests are independent from one another</p><br>
-    <p>Tests also give a little feedbackmessage in case the test fails, so the user already has a first hint where the failure
+    <p>Tests also give a little feedbackmessage in case the test fails, so the user already has a first hint where the failure<br>
     might come from e.g. test for writing wheter the file has not been written at all or with the wrong contents</p><br>
     <p>Tests get an argument path_t which stands for path test. It is the absolute path to the file which is being manipulated by the <br>
     test function. Therefore it makes sense to only manipulate one file per test, since otherwise the absolute path would need to be <br>
