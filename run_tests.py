@@ -40,88 +40,111 @@ def setup(location):
 """test functions for read_file"""
 
 
-def test_read_file():
-    assert file_manager.read_file("read_test_file") == "content_for_test_file", "the program failed to read a file with some content"
+def test_read_file(path_t):
+    assert file_manager.read_file(path_t) == "content_for_test_file", "the program failed to read a file with some content"
 
 
-def test_read_empty_file():
-    assert file_manager.read_file("read_empty_test_file") == "", "the program failed to read a empty file correctly"
+def test_read_empty_file(path_t):
+    assert file_manager.read_file(path_t) == "", "the program failed to read a empty file correctly"
 
 
-def test_read_none_existent_file():
-    assert file_manager.read_file("read_none_existent_test_file") is None, "the program failed to return None if the file does not exist"
+def test_read_none_existent_file(path_t):
+    assert file_manager.read_file(path_t) is None, "the program failed to return None if the file does not exist"
 
 
 """test functions for create_file"""
 
 
-def test_create_empty_file():
+def test_create_empty_file(path_t):
     # Test creating an empty file
-    assert file_manager.create_file("create_empty_file") is True, "the program failed to return True after creating the file"  # Creating an empty file should return True
+    assert file_manager.create_file(path_t) is True, "the program failed to return True after creating the file"  # Creating an empty file should return True
     # Check if the file is empty
-    assert file_manager.read_file("create_empty_file") == "", "the program did not create the file with the right contents"
+    assert file_manager.read_file(path_t) == "", "the program did not create the file with the right contents"
 
 
-def test_create_existing_file():
+def test_create_existing_file(path_t):
     # Test creating a file with a name that already exists
-    file_manager.create_file("existing_file", "initial_content")
-    assert file_manager.create_file("existing_file", "new_content") is True , "the program failed to return True after creating the file" # Creating a file with an existing name should return True
+    file_manager.create_file(path_t, "initial_content")
+    assert file_manager.create_file(path_t, "new_content") is True , "the program failed to return True after creating the file" # Creating a file with an existing name should return True
     # Check if the file was overwritten with the new content
-    assert file_manager.read_file("existing_file") == "new_content", "the program did not create the file with the right contents"
+    assert file_manager.read_file(path_t) == "new_content", "the program did not create the file with the right contents"
 
 
 """test functions for write_file"""
 
 
-def test_write_file():
+def test_write_file(path_t):
     # Write in existing test file
-    file_manager.write_file("write_test_file", "new_content_for_write_test_file")
-    assert file_manager.read_file("write_test_file") == "new_content_for_write_test_file", "the program failed to write the correct content to the existing file"
+    file_manager.write_file(path_t, "new_content_for_write_test_file")
+    assert file_manager.read_file(path_t) == "new_content_for_write_test_file", "the program failed to write the correct content to the existing file"
 
 
-def test_write_empty_content():
+def test_write_empty_content(path_t):
     # Test writing empty content to an existing file
-    file_manager.write_file("write_empty_content_test_file", "")
-    assert file_manager.read_file("write_empty_content_test_file") == "", "the program failed to write empty content to an existing file"
+    file_manager.write_file(path_t, "")
+    assert file_manager.read_file(path_t) == "", "the program failed to write empty content to an existing file"
 
 
-def test_write_non_existing_file():
+def test_write_non_existing_file(path_t):
     # Test writing to a non-existing file
-    assert file_manager.write_file("non_existing_file", "content_to_be_written") is True, "the program failed to create a new file and write the content (the file specified did not yet exist)"  # Writing to a non-existing file should create the file and return True
+    assert file_manager.write_file(path_t, "content_to_be_written") is True, "the program failed to create a new file and write the content (the file specified did not yet exist)"  # Writing to a non-existing file should create the file and return True
 
 
-def test_write_special_char():
+def test_write_special_char(path_t):
     # Test writing content with special characters to a file
-    file_manager.write_file("write_special_char_test_file", "Special characters: $£?!*ç%&")
-    assert file_manager.read_file("write_special_char_test_file") == "Special characters: $£?!*ç%&", "the programm failed to write special characters"
+    file_manager.write_file(path_t, "Special characters: $£?!*ç%&")
+    assert file_manager.read_file(path_t) == "Special characters: $£?!*ç%&", "the programm failed to write special characters"
 
 
 """test functions for delete_file"""
 
 
-def test_delete_existing_file():
-    assert file_manager.delete_file("delete_existing_test_file") is True, "the program failed to delete the file"  # Deleting an existing file should return True
-    assert file_manager.read_file("delete_existing_test_file") is None, "the 'deleted' file does still exist"
+def test_delete_existing_file(path_t):
+    assert file_manager.delete_file(path_t) is True, "the program failed to delete the file"  # Deleting an existing file should return True
+    assert file_manager.read_file(path_t) is None, "the 'deleted' file does still exist"
 
 
-def test_delete_non_existing_file():
-    assert file_manager.delete_file("non_existing_test_file") is False, "the program failed return false when the file does not exist"  # Deleting a non-existing file should return False
+def test_delete_non_existing_file(path_t):
+    assert file_manager.delete_file(path_t) is False, "the program failed return false when the file does not exist"  # Deleting a non-existing file should return False
 
 
-def test_delete_empty_file():
-    assert file_manager.delete_file("delete_empty_test_file") is True, "the program failed to delete the file"  # Deleting an empty file should return True
-    assert file_manager.read_file("delete_empty_test_file") is None, "the 'deleted' file does still exist"
+def test_delete_empty_file(path_t):
+    assert file_manager.delete_file(path_t) is True, "the program failed to delete the file"  # Deleting an empty file should return True
+    assert file_manager.read_file(path_t) is None, "the 'deleted' file does still exist"
 
 
-def tests(pattern):
+def tests(pattern, path_parent):
     total_start_time = time.time()
     res = {"total": 0, "pass": 0, "fail": 0, "error": 0}
 
+    #dictionary with function names as keys and file names which are used in test as value
+    file_names={"test_read_file":"read_test_file",
+                "test_read_empty_file":"read_empty_test_file",
+                "test_read_none_existent_file":"read_none_existent_test_file",
+                "test_create_empty_file":"create_empty_file",
+                "test_create_existing_file":"existing_file",
+                "test_write_file":"write_test_file",
+                "test_write_empty_content":"write_empty_content_test_file",
+                "test_write_non_existing_file":"non_existing_file",
+                "test_write_special_char":"write_special_char_test_file",
+                "test_delete_existing_file":"delete_existing_test_file",
+                "test_delete_non_existing_file":"non_existing_test_file",
+                "test_delete_empty_file":"delete_empty_test_file"
+                }
+
     for(name, test) in globals().items():
         if name.startswith("test_") and (pattern == None or pattern in test.__name__):
+            
+            #get the absolute path for the file
+            try:
+                file_n = file_names[name]
+            except:
+                file_n = "example.txt"
+            path_test = os.path.join(path_parent,file_n)
+
             test_start_time = time.time()
             try:
-                test()
+                test(path_test)
                 res["pass"] += 1
                 test_end_time = time.time()
                 test_time = test_end_time-test_start_time
@@ -158,8 +181,6 @@ def tests(pattern):
 def teardown(location, existing_start):
     """remove all files that were generated in the testing: more precisely all the files which were not in this folder in the beginning"""
     
-    #list with files created during the run
-    created = ["create_empty_file","existing_file","write_test_file","write_empty_content_test_file","non_existing_file","write_special_char_test_file"]
     # files which exist after the program has been run
     files_end = os.listdir(location)
 
@@ -168,19 +189,13 @@ def teardown(location, existing_start):
         if file not in existing_start:
             file_path = os.path.join(location, file)
             os.remove(file_path)
-    #deleting of the files created by file_manager.py during the running of the tesets
-    for file in created:
-        try:
-            os.remove(file)
-        except:
-            continue   
 
     return None
 
 
 def main():
     """main function for the flow control of the program"""
-    print("hello world")
+
     # get a stamp of which files exists before execution, so we can delete the ones that were generated in the test
     files_location = os.path.dirname(os.path.abspath(__file__))
     files_start = os.listdir(files_location)
@@ -190,10 +205,9 @@ def main():
     pattern = None
     if len(sys.argv) > 1 and sys.argv[1] == "--select":
         pattern = sys.argv[2]
-    tests(pattern)
+    tests(pattern, files_location)
 
     teardown(files_location, files_start)
-
     return None
 
 
