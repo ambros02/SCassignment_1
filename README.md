@@ -67,9 +67,9 @@
 - (Ambros 24.10.2023)
     <p>The results are color-coded for a better overview</p><br>
     <p>Green is used in case the test passes, yellow for fails and red for errors.</p><br>
-    <p>Indents and symbols are also used to allow for a better readibility, the time information has been caped at 8 floating points. Since 
-    the tests do not require big amounts of computation the tests will execute rather quickly, with 8 digits the time information is still 
-    there and the output is more readable</p><br>
+    <p>Indents and symbols are also used to allow for a better readibility, the time information has been caped at 8 <br>
+    floating points. Since the tests do not require big amounts of computation the tests will execute rather quickly, <br>
+    with 8 digits the time information is still there and the output is more readable</p><br>
 
 ----------------------------------------------------------------**Tests**----------------------------------------------------------------
 - (Wassim 23.10.2023)
@@ -95,12 +95,12 @@
 
 - (Ambros 24.10.2023)
     <p>The test execution order is randomized to ensure that all tests are independent from one another</p><br>
-    <p>Tests also give a little feedbackmessage in case the test fails, so the user already has a first hint where the failure might come from 
-    e.g. test for writing wheter the file has not been written at all or with the wrong contents</p><br>
-    <p>Tests get an argument path_t which stands for path test. It is the absolute path to the file which is being manipulated by the 
-    test function. Therefore it makes sense to only manipulate one file per test, since otherwise the absolute path would need to be 
-    reconstructed. An alternative would be to give the test functions the path to the parent, so it is easy to reconstruct absolute paths 
-    to multiple files, however it is good practice to test only one functionality per test which makes this concern fade.</p><br>
+    <p>Tests also give a little feedbackmessage in case the test fails, so the user already has a first hint where the failure
+    might come from e.g. test for writing wheter the file has not been written at all or with the wrong contents</p><br>
+    <p>Tests get an argument path_t which stands for path test. It is the absolute path to the file which is being manipulated by the <br>
+    test function. Therefore it makes sense to only manipulate one file per test, since otherwise the absolute path would need to be <br>
+    reconstructed. An alternative would be to give the test functions the path to the parent, so it is easy to reconstruct absolute <br>
+    paths to multiple files, however it is good practice to test only one functionality per test which makes this concern fade.</p><br>
 
 --------------------------------------------------------------**Teardown**---------------------------------------------------------------
 
@@ -122,8 +122,8 @@
     <p>Information for the tests if the test has an error</p><br>
     <p>User option to get the time output without the cutting to get more detailed information</p><br>
     <p>Additional cleanup if program crashes unexpectedly -> having teardown always even if program crashes</p><br>
-    <p>Cleanup function that removes everything from folder except for files of the program and files specified in case there are
-    many files produced by an error</p><br>
+    <p>Cleanup function that removes everything from folder except for files of the program and files specified in case there <br>
+    are many files produced by an error</p><br>
     <p>In case the of big test amounts consider minimizing the setup function with the --select option</p><br>
 
 
