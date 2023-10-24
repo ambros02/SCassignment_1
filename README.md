@@ -78,14 +78,15 @@
     The files have already been entered in the setup() function, so we only applied the read_file function and set it <br>
     equal to the content. The next test checks if you want to read an empty file and the last one compares a non-existent <br>
     file to None. <br></p>
-    <p>We have two tests for the create_file function. The first one tests if we can create a new empty file and asserts it <br>
+    <p>We have three tests for the create_file function. The first one tests if we can create a new empty file and asserts it <br>
     to True. The second one checks if we can create an already existing file. It also checks if we would overwrite the already <br>
-    existing file with the new content. <br></p>
-    <p>We have four different tests for the write_file() function. The first test checks if new content can be written at all. <br>
+    existing file with the new content. The third checks if the function returns False if there is an invalid filename<br></p>
+    <p>We have five different tests for the write_file() function. The first test checks if new content can be written at all. <br>
     We use the write_file function to write new content in an already existing file. The next test checks if we can write an <br>
     empty string. We have to use the write_file() function first to write an emtpy string and then assert the file equal to an <br>
     empty string. We also test if we can write to a non-existing file. Since the file doesn't exist, it is not mentioned in the <br> 
-    setup function. The last test checks if we can write with some special characters.<br></p>
+    setup function. The fourth test checks if we can write with some special characters. The last test checks that the function <br>
+    returns False in the case of an invalid file name</p>
     <p>The delete_file tests are structured the same as the others. Here, however, we have built in two assert arguments, one to <br>
     see if the file has been deleted and another just to extra check that there is nothing in the file with the read_me function. <br>
     The first test deletes an existing file. The file is already mentioned in the setup function as well. The next test <br>

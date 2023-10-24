@@ -1,8 +1,8 @@
+import file_manager
 import os
+import random
 import sys
 import time
-import file_manager
-import random
 
 
 
@@ -66,9 +66,13 @@ def test_create_existing_file(path_t):
     assert file_manager.create_file(path_t, "new_content") is True , "the program failed to return True after creating the file" # Creating a file with an existing name should return True
     # Check if the file was overwritten with the new content
     assert file_manager.read_file(path_t) == "new_content", "the content of the file does not match"
-
+    
+def test_create_false_file(path_t):
+    #test if the create file function can handle wrong filenames
+    assert file_manager.create_file("\\33/kdwa") is False, "the program failed to return False after receiving an invalid file name"
 
 """test functions for write_file"""
+
 
 
 def test_write_file(path_t):
@@ -93,6 +97,9 @@ def test_write_special_char(path_t):
     file_manager.write_file(path_t, "Special characters: $£?!*ç%&")
     assert file_manager.read_file(path_t) == "Special characters: $£?!*ç%&"
 
+def test_write_false_file(path_t):
+    #test if the function returns False for an invalid filename
+    assert file_manager.write_file("\\33/kdwa","some content") is False, "the progran failed to return False after receiving an invalid file name"
 
 """test functions for delete_file"""
 
