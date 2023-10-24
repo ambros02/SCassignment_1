@@ -124,5 +124,7 @@
     <p>Cleanup function that removes everything from folder except for files of the program and files specified in case there <br>
     are many files produced by an error</p>
     <p>In case the of big test amounts consider minimizing the setup function with the --select option</p>
+    <p>The tests for wrong file names result in the functions (create, write) to print an error message to the console. <br>
+    this behaviour could be removed by redirecting the standard output while printing or possibly by mocking the functions.<br></p>
 
 
