@@ -4,6 +4,7 @@ import time
 import file_manager
 
 
+
 def setup(location):
     """use setup to create needed files with name and optional content"""
 
@@ -99,7 +100,7 @@ def test_write_special_char():
 
 
 def test_delete_existing_file():
-    assert file_manager.delete_file("delete_existing_test_file") is True  # Deleting an existing file should return True
+    assert file_manager.delete_file("delete_existing_test_file") is True, "the test failed to delete the file"  # Deleting an existing file should return True
     assert file_manager.read_file("delete_existing_test_file") is None
 
 
@@ -124,25 +125,33 @@ def tests(pattern):
                 res["pass"] += 1
                 test_end_time = time.time()
                 test_time = test_end_time-test_start_time
-                print(f"Test: {name}, Pass, Time: {test_time:.8f}s")
+                print(f"\033[0;32m")
+                print(f"[{res['total']+1}]".center(80,"="))
+                print(f"Test: {name}:\n\t [+] Status: Pass\n\t [+] Time: {test_time:.8f}s")
             except AssertionError:
                 res["fail"] += 1
                 test_end_time = time.time()
                 test_time = test_end_time-test_start_time
-                print(f"Test: {name}, Fail, Time: {test_time:.8f}s")
+                print(f"\033[0;33m")
+                print(f"[{res['total']+1}]".center(80,"="))
+                print(f"Test: {name}:\n\t [-] Status Fail\n\t [-] Time: {test_time:.8f}s")
             except Exception:
                 res["error"] += 1
                 test_end_time = time.time()
                 test_time = test_end_time-test_start_time
-                print(f"Test: {name}, Error, Time: {test_time:.8f}s")
+                print(f"\033[0;31m")
+                print(f"[{res['total']+1}]".center(80,"="))
+                print(f"Test: {name}:\n\t [*] Status: Error\n\t [*] Time: {test_time:.8f}s")
             finally:
                 res["total"] += 1
+                print(f"\033[0;0m")
         else:
             continue
 
     total_end_time = time.time()
     total_time = total_end_time - total_start_time
-    print(f"Total Tests: {res['total']}, Passed: {res['pass']}, Failed: {res['fail']}, Errors: {res['error']}, Time: {total_time:.8f}s")
+    print(f"[total]".center(80,"="))
+    print(f"\t[!]Total Tests: {res['total']}\n\t\033[0;32m[!] Passed: {res['pass']}\n\t\033[0;33m[!] Failed: {res['fail']}\n\t\033[0;31m[!] Errors: {res['error']}\n\t\033[0m[!] Time: {total_time:.8f}s")
 
 
 def teardown(location, existing_start):
@@ -170,7 +179,7 @@ def teardown(location, existing_start):
 
 def main():
     """main function for the flow control of the program"""
-
+    print("hello world")
     # get a stamp of which files exists before execution, so we can delete the ones that were generated in the test
     files_location = os.path.dirname(os.path.abspath(__file__))
     files_start = os.listdir(files_location)
